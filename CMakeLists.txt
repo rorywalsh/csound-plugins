@@ -18,8 +18,11 @@ set(CMAKE_VERBOSE_MAKEFILE on)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 
 # set compilation flags
-set(CMAKE_CXX_FLAGS  ${CMAKE_CXX_FLAGS}  "-std=c++11")
-set(CMAKE_C_FLAGS ${CMAKE_C_FLAGS} "-std=c99 -fPIC -Wall -DUSE_DOUBLE -DB64BIT")
+
+if(NOT(MSVC))
+ set(CMAKE_CXX_FLAGS  ${CMAKE_CXX_FLAGS}  "-std=c++11")
+ set(CMAKE_C_FLAGS ${CMAKE_C_FLAGS} "-std=c99 -fPIC -Wall -DUSE_DOUBLE -DB64BIT")
+endif()
 
 # options
 option(USE_LIB64 "Set to on to set installation dir for libs to lib64" OFF)

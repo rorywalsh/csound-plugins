@@ -1239,7 +1239,7 @@ static int32_t tubeharmonics_stereo_perf(CSOUND *csound, t_tubeharmonics_stereo 
     MYFLT abs1 = p->src_abs1;
     p->src_abs1 = tgt_abs1;
     MYFLT ch0 = 1, ch1 = 1;
-    MYFLT minflt = std::numeric_limits<MYFLT>::min();
+    MYFLT minflt = (std::numeric_limits<MYFLT>::min)();
 
     for(int n=0; n<samplesblock; n++) {
         ch0 = a1[n] * ingain;
@@ -1393,7 +1393,7 @@ static int32_t tubeharmonics_mono_perf(CSOUND *csound, t_tubeharmonics_mono *p) 
 
         //apply harmonics
         if(ch0 == 0)
-            ch0 = std::numeric_limits<MYFLT>::min();
+            ch0 = (std::numeric_limits<MYFLT>::min)();
         MYFLT h0 = fast_sin(ch0)/fast_sin(ch0*2)*drve_rnd0+(ch0-tan(ch0))*drvo_rnd0;
 
         //dc filter i
